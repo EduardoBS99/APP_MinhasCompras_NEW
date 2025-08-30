@@ -6,16 +6,61 @@
     
     
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Somar"/>
+        <ToolbarItem Text="Somar" Clicked="ToolbarItem_Clicked_1"/>
         <ToolbarItem Text="Adicionar" Clicked="ToolbarItem_Clicked"/>
     </ContentPage.ToolbarItems>
 
 
 
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <!-- Barra de pesquisa para buscar produtos na lista -->
+        <SearchBar x:Name="txt_search"
+                   Placeholder="Busca de Produtos"
+                   TextChanged="txt_search_TextChanged"
+                   />
+
+        <!-- Lista que exibirá os produtos cadastrados -->
+        <ListView x:Name="lst_produtos">
+
+            <!-- Cabeçalho da tabela (colunas) -->
+            <ListView.Header>
+                <!-- Definição de um grid com 6 colunas -->
+                <Grid ColumnDefinitions="*, *, *, *, *, *">
+                    <!-- Cada Label representa o título de uma coluna -->
+                    <Label Grid.Column="0" Text="ID" />
+                    <Label Grid.Column="1" Text="Descrição" />
+                    <Label Grid.Column="2" Text="Preço" />
+                    <Label Grid.Column="3" Text="Quantidade" />
+                    <Label Grid.Column="4" Text="Total" />
+                </Grid>
+            </ListView.Header>
+
+            <!-- Template que define como cada item da lista será exibido -->
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+
+                        <!-- Ações de contexto (menu ao segurar/arrastar o item da lista) -->
+                        <ViewCell.ContextActions>
+                            <!-- Opção para remover um produto -->
+                            <MenuItem Text="Remover" />
+                        </ViewCell.ContextActions>
+
+                        <!-- Estrutura em Grid para exibir os dados do produto em colunas -->
+                        <Grid ColumnDefinitions="*, *, *, *, *, *">
+                            <!-- Os valores são vinculados às propriedades do objeto Produto (Data Binding) -->
+                            <!-- Mesma notação do objeto Produto (Data Binding) -->
+                            <Label Grid.Column="0" Text="{Binding Id}" />
+                            <Label Grid.Column="1" Text="{Binding Descricao}" />
+                            <Label Grid.Column="2" Text="{Binding Preco}" />
+                            <Label Grid.Column="3" Text="{Binding Quantidade}" />
+                            <Label Grid.Column="4" Text="{Binding Total}" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
     </VerticalStackLayout>
 </ContentPage>

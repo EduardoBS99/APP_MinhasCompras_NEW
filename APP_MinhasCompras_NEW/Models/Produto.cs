@@ -11,5 +11,8 @@ namespace APP_MinhasCompras_NEW.Models
         public double Quantidade { get; set; }
         public double Preco { get; set; }
 
+        // Inserindo a coluna total que realzia a operação
+        public double Total { get => Quantidade * Preco; }
+
     }
 }
