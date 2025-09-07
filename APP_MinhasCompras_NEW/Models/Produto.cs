@@ -29,7 +29,7 @@ namespace APP_MinhasCompras_NEW.Models
             get => _quantidade;
             set
             {
-                if (value == 0)
+                if (value <= 0)
                 {
                     throw new Exception("Por favor, preencha a quantidade");
 
@@ -42,7 +42,7 @@ namespace APP_MinhasCompras_NEW.Models
             get => _preco;
             set
             {
-                if (value == 0)
+                if (value <= 0)
                 {
                     throw new Exception("Por favor, preencha o preço");
 
