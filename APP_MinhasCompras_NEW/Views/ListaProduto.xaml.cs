@@ -25,7 +25,8 @@ public partial class ListaProduto : ContentPage
 
         try
         {
-            
+            //bug da listagem dupla
+            lista.Clear();
             // Busca todos os produtos armazenados no banco de dados de forma assíncrona
             List<Produto> tmp = await App.Db.GetAll();
 
