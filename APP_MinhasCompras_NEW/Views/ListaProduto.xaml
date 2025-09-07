@@ -20,12 +20,12 @@
                    />
 
         <!-- Lista que exibirá os produtos cadastrados -->
-        <ListView x:Name="lst_produtos">
+        <ListView x:Name="lst_produtos" ItemSelected="lst_produtos_ItemSelected">
 
             <!-- Cabeçalho da tabela (colunas) -->
             <ListView.Header>
                 <!-- Definição de um grid com 6 colunas -->
-                <Grid ColumnDefinitions="*, *, *, *, *, *">
+                <Grid ColumnDefinitions="*, *, *, *, *">
                     <!-- Cada Label representa o título de uma coluna -->
                     <Label Grid.Column="0" Text="ID" />
                     <Label Grid.Column="1" Text="Descrição" />
@@ -43,11 +43,11 @@
                         <!-- Ações de contexto (menu ao segurar/arrastar o item da lista) -->
                         <ViewCell.ContextActions>
                             <!-- Opção para remover um produto -->
-                            <MenuItem Text="Remover" />
+                            <MenuItem Text="Remover" Clicked="MenuItem_Clicked" />
                         </ViewCell.ContextActions>
 
                         <!-- Estrutura em Grid para exibir os dados do produto em colunas -->
-                        <Grid ColumnDefinitions="*, *, *, *, *, *">
+                        <Grid ColumnDefinitions="*, *, *, *, *">
                             <!-- Os valores são vinculados às propriedades do objeto Produto (Data Binding) -->
                             <!-- Mesma notação do objeto Produto (Data Binding) -->
                             <Label Grid.Column="0" Text="{Binding Id}" />
